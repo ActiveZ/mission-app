@@ -10,12 +10,12 @@ import java.util.List;
 
 public interface MissionRepository extends JpaRepository<Mission, Integer> { //<nature de l'entité, nature de la clé primaire>
 
-    List<Mission> findByDateDebutAfter(LocalDate date); // utiliser after car greaterThan ne marche pas avec ce type de variable (localeDate)
+    List<Mission> findByDateDebutAfter(LocalDate date); // utiliser after car greaterThan ne marche pas avec ce type de variable (localeDate): NON, ça marche aussi avec gte
     // variante avec sql
     @Query("SELECT m from Mission m WHERE m.dateDebut >=?1")
     List <Mission> listerProchainesMissions(LocalDate date);
 
-    List<Mission> findByDateDebutAfterAndTauxJournalierGreaterThan(LocalDate date, BigDecimal tauxJournalier);
+    List<Mission> findByDateDebutGreaterThanEqualAndTauxJournalierGreaterThan(LocalDate date, BigDecimal tauxJournalier);
 
 
 }

@@ -21,7 +21,7 @@ public class ListerProchainesMissions implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("missions qui débutent aujourd’hui ou à une date ultérieure.");
         // methode directe
-        missionRepository.findByDateDebutAfter(LocalDate.now()).forEach(System.out::println);
+        missionRepository.findByDateDebutAfter(LocalDate.now().minusDays(1)).forEach(System.out::println);
         // methode avec @Query
         missionRepository.listerProchainesMissions(LocalDate.of(2021, 1, 1)).forEach(System.out::println);
     }

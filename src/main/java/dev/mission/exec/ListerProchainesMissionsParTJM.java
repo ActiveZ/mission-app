@@ -21,6 +21,6 @@ public class ListerProchainesMissionsParTJM implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("missions qui débutent aujourd’hui ou à une date ultérieure ET qui ont un taux journalier supérieur ou égal à un taux donné.");
-        missionRepository.findByDateDebutAfterAndTauxJournalierGreaterThan(LocalDate.now(),new BigDecimal(10.10)).forEach(System.out::println);
+        missionRepository.findByDateDebutGreaterThanEqualAndTauxJournalierGreaterThan(LocalDate.now(),new BigDecimal(10.10)).forEach(System.out::println);
     }
 }
